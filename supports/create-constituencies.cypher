@@ -41,3 +41,25 @@ CREATE	(:Constituency {name:'Carlow–Kilkenny', population: '145,659', seats:'5
 ,	(:Constituency {name:'Waterford', population: '113,795', seats:'4'})
 ,	(:Constituency {name:'Wexford', population: '145,320', seats:'5'})
 ,	(:Constituency {name:'Wicklow', population: '141,012', seats:'5'})
+
+
+.......................::::::::::::::::::::::::::::::: POLITICAL PARTIES::::::::::::::::::::::::::::::::::.....................................
+
+CREATE
+	(:Party {name:'Fine Gael'})
+	,	(:Party {name:'Renua Ireland'})
+	,	(:Party {name:'Labour'})
+	,	(:Party {name:'Fianna Fail'})
+	,	(:Party {name:'Social Democrats'})
+	,	(:Party {name:'Sinn Fein'})
+	,	(:Party {name:'WUAG'})
+	,	(:Party {name:'AAA'})
+	,	(:Party {name:'Independents'})
+	,	(:Party {name:'Green Party'})
+	,	(:Party {name:'Irish Democratic Party'})
+	,	(:Party {name:'Peoples Convention'})
+	,	(:Party {name:'Workers Party'})
+	,	(:Party {name:'Communist Party'})
+	,	(:Party {name:'Fis Nua'})
+	,	(:Party {name:'Direct Democracy'})
+	,	(:Party {name:'Catholic Democrats'})
