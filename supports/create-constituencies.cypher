@@ -67,14 +67,14 @@ CREATE
 	
 	
 	
-	.......................::::::::::::::::::::::::::::::: CANDIDATES::::::::::::::::::::::::::::::::::.................
+	///////////CANDIDATES///////////
 	
 	CREATE (:Candidate {name: 'Pat Deering'}) //creates a node named Pat Deering
 	
 		MATCH (x:Candidate) WHERE x.name = 'Pat Deering' RETURN x // returns Pat Deering 
 	
 		
-		........::::::: Matches a node, party and a constituency and creates 2 relationships::::::::::::.................
+		///////////Matches a node, party and a constituency and creates 2 relationships///////////
 		MATCH (x:Candidate) WHERE x.name = 'Pat Deering' 
 		OPTIONAL MATCH (p:Party) WHERE p.name = 'Fine Gael'
 		OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Carlow–Kilkenny'
@@ -84,53 +84,42 @@ CREATE
 		
 		
 				
-		...........::::::Matches candidate with political party::::::::........
+		///////////Matches candidate with political party///////////
 		match (n:Candidate) where n.name = 'David Fitzgerald'
 		Optional match (n:Candidate)-[:Is_In]->(p:Party)
 		return n,p
 				
 				
-		...........::::::Matches candidate with constituency the candidate ran in::::::::::::.....................
+		///////////Matches candidate with constituency the candidate ran in///////////
 		match (n:Candidate) where n.name = 'David Fitzgerald'
 		Optional match (n:Candidate)-[:Ran_In]->(p:Constituency)
 		return n,p
 
 		
 		
-		.................:::::::::MATCHES candidates, party, constituency::::::::::..................
+		///////////MATCHES candidates, party, constituency///////////
 		MATCH (p:Party {name: 'Fine Gael'})
 		OPTIONAL MATCH (n:Candidate)-[:Is_In]->(p:Party)
 		OPTIONAL MATCH (n:Candidate)-[:Ran_In]->(c:Constituency)
 		RETURN n,p,c
 		
-		.........:::::::DELETES candidate and all its relationships:::::::::::..............
+		///////////DELETES candidate and all its relationships///////////
 		MATCH (n { name:'Pat Deering' })
 		DETACH DELETE n
 		
+		///////////shows candidate(check id)///////////
+		MATCH (c:Candidate {name: 'Peter Fitzpatrick'})
+		RETURN c
 		
 		
-		
-		
-		
-		////////////////Adding query//////////////temp////////
-		
-		///Adding new candidate
-		CREATE (:Candidate {name: 'Tom Neville'})
-		MATCH (x:Candidate) WHERE x.name = 'Tom Neville' RETURN x 
-		
-		//adding candidate relationships
-		MATCH (x:Candidate) WHERE x.name = 'Tom Neville' 
-		OPTIONAL MATCH (p:Party) WHERE p.name = 'Fine Gael'
-		OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Limerick County'
-		CREATE x-[:Is_In]->p
-		CREATE x-[:Ran_In]->c
-		return x,p,c
-		
-		
-
 		////////Check Queries///////////
 		.....::::Matches Party with its candidate and constituency he ran in from::::::::...............
 		MATCH (p:Party {name: 'Fine Gael'})
 		OPTIONAL MATCH (n:Candidate)-[:Is_In]->(p:Party)
 		OPTIONAL MATCH (n:Candidate)-[:Ran_In]->(c:Constituency)
 		RETURN n,p,c
+		
+		///////////matches party with candidates from that party///////////
+		MATCH (p:Party {name: 'Fine Gael'})
+		OPTIONAL MATCH (n:Candidate)-[:Is_In]->(p:Party)
+		RETURN n,p
