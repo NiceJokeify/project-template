@@ -103,7 +103,9 @@ CREATE
 		OPTIONAL MATCH (n:Candidate)-[:Ran_In]->(c:Constituency)
 		RETURN n,p,c
 		
-		
+		.........:::::::DELETES candidate and all its relationships:::::::::::..............
+		MATCH (n { name:'Pat Deering' })
+		DETACH DELETE n
 		
 		
 		
@@ -113,13 +115,13 @@ CREATE
 		////////////////Adding query//////////////temp////////
 		
 		///Adding new candidate
-		CREATE (:Candidate {name: 'Mary Howard'})
-		MATCH (x:Candidate) WHERE x.name = 'Mary Howard' RETURN x 
+		CREATE (:Candidate {name: 'Joe McHugh'})
+		MATCH (x:Candidate) WHERE x.name = 'Aine Collins' RETURN x 
 		
 		//adding candidate relationships
-		MATCH (x:Candidate) WHERE x.name = 'Mary Howard' 
+		MATCH (x:Candidate) WHERE x.name = 'Joe McHugh' 
 		OPTIONAL MATCH (p:Party) WHERE p.name = 'Fine Gael'
-		OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Clare'
+		OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Donegal'
 		CREATE x-[:Is_In]->p
 		CREATE x-[:Ran_In]->c
 		return x,p,c
