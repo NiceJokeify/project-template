@@ -115,13 +115,13 @@ CREATE
 		////////////////Adding query//////////////temp////////
 		
 		///Adding new candidate
-		CREATE (:Candidate {name: 'Joe McHugh'})
-		MATCH (x:Candidate) WHERE x.name = 'Aine Collins' RETURN x 
+		CREATE (:Candidate {name: 'Tom Neville'})
+		MATCH (x:Candidate) WHERE x.name = 'Tom Neville' RETURN x 
 		
 		//adding candidate relationships
-		MATCH (x:Candidate) WHERE x.name = 'Joe McHugh' 
+		MATCH (x:Candidate) WHERE x.name = 'Tom Neville' 
 		OPTIONAL MATCH (p:Party) WHERE p.name = 'Fine Gael'
-		OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Donegal'
+		OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Limerick County'
 		CREATE x-[:Is_In]->p
 		CREATE x-[:Ran_In]->c
 		return x,p,c
