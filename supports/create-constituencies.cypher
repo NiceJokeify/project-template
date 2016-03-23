@@ -104,7 +104,7 @@ CREATE
 		RETURN n,p,c
 		
 		///////////DELETES candidate and all its relationships///////////
-		MATCH (n { name:'Pat Deering' })
+		MATCH (n { name:'Stephen Donnelly' })
 		DETACH DELETE n
 		
 		///////////shows candidate(check id)///////////
