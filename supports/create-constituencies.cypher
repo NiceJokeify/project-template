@@ -123,9 +123,3 @@ CREATE
 		MATCH (p:Party {name: 'Fine Gael'})
 		OPTIONAL MATCH (n:Candidate)-[:Is_In]->(p:Party)
 		RETURN n,p
-		
-		
-		
-		
-		
-		
