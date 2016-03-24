@@ -20,9 +20,18 @@ Other scrips were used to check if nodes were created correctly and that the rel
 | Candidate     | Node representing the Candidate. Includes the name of the candidate.|
 
 
+
+######Relationships
+| Relationship  | Description|
+| ------------- |------------|
+| Ran_In        | Link between Candidate and the Constituency he/she ran in from.|
+| Is_In	        | Link between Candidate and the Political Party he/she is member of.|
+
+
 #####Sample Code
 
 >Sample code used to create node Pat Deering and display Pat Deering node on screen
+
 ```
 CREATE (:Candidate {name: 'Pat Deering'})
 MATCH (x:Candidate) WHERE x.name = 'Pat Deering' RETURN x
@@ -37,6 +46,15 @@ OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Carlow–Kilkenny'
 CREATE x-[:Is_In]->p
 CREATE x-[:Ran_In]->c
 return x,p,c
+```
+
+>Displays all Candidates in Specific Political Party and their relationship to Party + Constituency
+
+```
+MATCH (p:Party {name: 'Fine Gael'})
+OPTIONAL MATCH (n:Candidate)-[:Is_In]->(p:Party)
+OPTIONAL MATCH (n:Candidate)-[:Ran_In]->(c:Constituency)
+RETURN n,p,c
 ```
 
 ## Queries
