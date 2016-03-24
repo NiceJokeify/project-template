@@ -78,13 +78,17 @@ WHERE NOT (cocandidate = candidate)
 RETURN cons, collect(cocandidate)
 ```
 
-#### Query two title
-This query retreives the Bacon number of an actor...
+#### Query2: Display Candidate - Constituency - Party
+
+>In the query below I want to show all candidates who Ran In specific(Longford–Westmeath) Constituency
+>Then I'm matching Candidate with Party
+
 ```cypher
-MATCH
-	(Bacon)
-RETURN
-	Bacon;
+MATCH (c:Constituency) where c.name = 'Longford–Westmeath'
+    OPTIONAL MATCH (x:Candidate)-[:Ran_In]->(c:Constituency)
+    OPTIONAL MATCH (x:Candidate)-[:Is_In]->(p:Party)
+RETURN c,x,p
+
 ```
 
 #### Query three title
