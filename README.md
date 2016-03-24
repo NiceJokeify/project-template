@@ -32,14 +32,14 @@ Other scrips were used to check if nodes were created correctly and that the rel
 
 >Sample code used to create node Pat Deering and display Pat Deering node on screen
 
-```
+```cypher
 CREATE (:Candidate {name: 'Pat Deering'})
 MATCH (x:Candidate) WHERE x.name = 'Pat Deering' RETURN x
 ```
 
 >Sample code used to Match Candidate node with Political Party and Constituency and create Relationship between them.
 
-```
+```cypher
 MATCH (x:Candidate) WHERE x.name = 'Pat Deering' 
 OPTIONAL MATCH (p:Party) WHERE p.name = 'Fine Gael'
 OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Carlow–Kilkenny'
@@ -50,7 +50,7 @@ return x,p,c
 
 >Displays all Candidates in Specific Political Party and their relationship to Party + Constituency
 
-```
+```cypher
 MATCH (p:Party {name: 'Fine Gael'})
 OPTIONAL MATCH (n:Candidate)-[:Is_In]->(p:Party)
 OPTIONAL MATCH (n:Candidate)-[:Ran_In]->(c:Constituency)
@@ -61,13 +61,21 @@ RETURN n,p,c
 Summarise your three queries here.
 Then explain them one by one in the following sections.
 
-#### Query one title
-This query retreives the Bacon number of an actor...
+#### Query 1: List of Nodes with most relationships back to another Node.
+
+>In the query below I want to find out the most Candidates running in Constituency.
+>Next is finding out list of co-Candidates for each Constituency. 
+>End goal is to find out which co-Candidate most frequently worked with Constituency that has most Runs from.
+
 ```cypher
-MATCH
-	(Bacon)
-RETURN
-	Bacon;
+MATCH (candidate:Candidate)-[:Ran_In]->(cons:Constituency) 
+WITH candidate, COUNT(cons) as numberofcons, collect(cons) as constituencies
+ORDER BY numberofcons DESC 
+LIMIT 1
+unwind constituencies as cons
+MATCH (cocandidate:Candidate)-[:Ran_In]->cons
+WHERE NOT (cocandidate = candidate)
+RETURN cons, collect(cocandidate)
 ```
 
 #### Query two title
@@ -90,3 +98,4 @@ RETURN
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
+2. [StackOverflow](http://stackoverflow.com/questions/22346526/how-to-count-the-number-of-relationships-in-neo4j?rq=1), Michael Hunger
