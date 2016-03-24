@@ -85,13 +85,13 @@ CREATE
 		
 				
 		///////////Matches candidate with political party///////////
-		match (n:Candidate) where n.name = 'David Fitzgerald'
+		match (n:Candidate) where n.name = 'Pat Deering'
 		Optional match (n:Candidate)-[:Is_In]->(p:Party)
 		return n,p
 				
 				
 		///////////Matches candidate with constituency the candidate ran in///////////
-		match (n:Candidate) where n.name = 'David Fitzgerald'
+		match (n:Candidate) where n.name = 'Pat Deering'
 		Optional match (n:Candidate)-[:Ran_In]->(p:Constituency)
 		return n,p
 
@@ -104,11 +104,11 @@ CREATE
 		RETURN n,p,c
 		
 		///////////DELETES candidate and all its relationships///////////
-		MATCH (n { name:'Stephen Donnelly' })
+		MATCH (n { name:'Eamonn Maloney' })
 		DETACH DELETE n
 		
 		///////////shows candidate(check id)///////////
-		MATCH (c:Candidate {name: 'Peter Fitzpatrick'})
+		MATCH (c:Candidate {name: 'Pat Deering'})
 		RETURN c
 		
 		
