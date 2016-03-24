@@ -58,8 +58,7 @@ RETURN n,p,c
 ```
 
 ## Queries
-Summarise your three queries here.
-Then explain them one by one in the following sections.
+
 
 #### Query 1: List of Nodes with most relationships back to another Node.
 
