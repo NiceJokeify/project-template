@@ -2,10 +2,23 @@
 ###### Pawel Borzym, G00313594
 
 ## Introduction
-Give a summary here of what your project is about.
+This is a project about the Irish General Elections that were held in 2016.
+Project was done using Neo4J database, it holds information such as Candidate names, Constituencies and Political Parties. 
 
 ## Database
-Explain how you created your database, and how information is represented in it.
+The Database was created using Neo4J and changes were implemented using Cypher scripts. 
+These Cypher scripts were used to add Candidate Nodes(Names + Surnames), Constituency Nodes, Political Parties and Relationships between all of the nodes.
+All of the scripts used in this project are located in the Supports folder.
+Other scrips were used to check if nodes were created correctly and that the relationships were done correctly.
+
+######Nodes
+
+| Node          | Description                                                 |
+| ------------- |:-----------------------------------------------------------:|
+| Party         | Node representing Political Party created, displays the Name|
+| Constituency  | Node representing the are Candidate ran in from. Includes the name, seats and the population of the Constituency|
+| Candidate     | Node representing the Candidate. Includes the name of the candidate.|
+
 
 ## Queries
 Summarise your three queries here.
