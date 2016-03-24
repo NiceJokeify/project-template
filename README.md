@@ -91,13 +91,33 @@ RETURN c,x,p
 
 ```
 
-#### Query three title
-This query retreives the Bacon number of an actor...
+#### Query3 List View: Node Property and their COUNT
+
+>Here I'm displaying the Properties (under Label title) of all nodes combined and their count (Count title).
+
+| Label         |Count|
+| ------------- |-----|
+| Candidate     | 549 |
+| Party	        | 17  |
+| Constituency  | 40  |
+
 ```cypher
-MATCH
-	(Bacon)
-RETURN
-	Bacon;
+MATCH (n) 
+WITH DISTINCT LABELS(n) AS interim, COUNT(n) AS interimCount
+UNWIND interim AS Label
+RETURN Label, SUM(interimCount) AS Count
+```
+
+
+####Query4: Return Nodes with specific seat numbers.
+
+>This query returns all Constituencies that have specific number of seats(5 in example).
+>Can be used for any property that node holds (ex. Population, Seats)
+
+```
+MATCH (p:Constituency)
+WHERE p.seats='5'
+RETURN p
 ```
 
 ## References
