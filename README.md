@@ -13,12 +13,31 @@ Other scrips were used to check if nodes were created correctly and that the rel
 
 ######Nodes
 
-| Node          | Description                                                 |
-| ------------- |:-----------------------------------------------------------:|
+| Node          | Description|
+| ------------- |------------|
 | Party         | Node representing Political Party created, displays the Name|
 | Constituency  | Node representing the are Candidate ran in from. Includes the name, seats and the population of the Constituency|
 | Candidate     | Node representing the Candidate. Includes the name of the candidate.|
 
+
+#####Sample Code
+
+>Sample code used to create node Pat Deering and display Pat Deering node on screen
+```
+CREATE (:Candidate {name: 'Pat Deering'})
+MATCH (x:Candidate) WHERE x.name = 'Pat Deering' RETURN x
+```
+
+>Sample code used to Match Candidate node with Political Party and Constituency and create Relationship between them.
+
+```
+MATCH (x:Candidate) WHERE x.name = 'Pat Deering' 
+OPTIONAL MATCH (p:Party) WHERE p.name = 'Fine Gael'
+OPTIONAL MATCH (c:Constituency) WHERE c.name = 'Carlow–Kilkenny'
+CREATE x-[:Is_In]->p
+CREATE x-[:Ran_In]->c
+return x,p,c
+```
 
 ## Queries
 Summarise your three queries here.
