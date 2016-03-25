@@ -121,4 +121,5 @@ RETURN p
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
-2. [StackOverflow](http://stackoverflow.com/questions/22346526/how-to-count-the-number-of-relationships-in-neo4j?rq=1), Michael Hunger
+2. [StackOverflow](http://stackoverflow.com/questions/22346526/how-to-count-the-number-of-relationships-in-neo4j?rq=1), Michael Hunger 
+3. [StackOverflow](http://stackoverflow.com/questions/18191900/neo4j-cypher-match-by-multiple-relationship-types-strange-behavior?rq=1), Eve Freeman . Curt
